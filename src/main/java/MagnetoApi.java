@@ -2,26 +2,29 @@
  *
  * @author foliva
  */
+import RestServices.MutantRestService;
+
 import static spark.Spark.*;
 public class MagnetoApi {
 
     public MagnetoApi(){
         port(getHerokuAssignedPort());
-        System.out.println("Creando API Magneto");
-        System.out.println("Port "+getHerokuAssignedPort());
-        get("/hello", (req, res) -> "Hello World");
-
+    }
+    private void loadRestService(){
+        new MutantRestService();
+        Exceptions.getInstance().create();
     }
 
 
     public static void main(String[] args) {
         MagnetoApi magnetoApi = new MagnetoApi();
+        magnetoApi.loadRestService();
     }
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {
             return Integer.parseInt(processBuilder.environment().get("PORT"));
         }
-        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+        return 4567;
     }
 }
