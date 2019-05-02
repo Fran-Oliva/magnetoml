@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'application'
-mainClassName='MagnetoMain'
+mainClassName='MagnetoApi'
 
 sourceCompatibility = 1.8
 if (!hasProperty('mainClass')) {
@@ -20,6 +20,12 @@ dependencies {
 task stage {
     dependsOn installDist
 }
+task copyToLib(type: Copy) {
+    into "$buildDir/libs"
+    from(configurations.compile)
+}
+
+stage.dependsOn(copyToLib)
 
 jar{
     manifest{
