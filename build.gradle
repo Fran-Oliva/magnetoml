@@ -28,10 +28,12 @@ task copyToLib(type: Copy) {
 
 stage.dependsOn(copyToLib)
 
-jar{
-    manifest{
+jar {
+    manifest {
         attributes(
-                'Main-Class': 'MagnetoApi'
-        )
+                'Class-Path': configurations.compile.files.collect {"$it.name"}.join(' '),
+                'Main-Class': 'MagnetoApi')}
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
