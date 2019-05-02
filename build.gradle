@@ -16,6 +16,7 @@ repositories {
 
 dependencies {
     compile group: 'com.sparkjava', name: 'spark-core', version: '2.9.0'
+    provided group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
    }
 task stage {
     dependsOn installDist
