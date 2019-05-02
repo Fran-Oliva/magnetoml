@@ -8,6 +8,7 @@ public class MagnetoApi {
     public MagnetoApi(){
         port(getHerokuAssignedPort());
         System.out.println("Creando API Magneto");
+        System.out.println("Port "+getHerokuAssignedPort());
         get("/hello", (req, res) -> "Hello World");
 
     }
