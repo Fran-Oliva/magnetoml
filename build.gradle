@@ -2,7 +2,6 @@ group 'magnetoml'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
-mainClassName='MagnetoMain'
 
 sourceCompatibility = 1.8
 
