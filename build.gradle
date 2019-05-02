@@ -2,6 +2,7 @@ group 'magnetoml'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+mainClassName='MagnetoMain'
 
 sourceCompatibility = 1.8
 
@@ -12,4 +13,7 @@ repositories {
 dependencies {
     compile 'com.sparkjava:spark-core:2.2'
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+task stage{
+    dependsOn build
 }
