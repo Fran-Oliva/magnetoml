@@ -6,6 +6,9 @@ apply plugin: 'application'
 mainClassName='MagnetoMain'
 
 sourceCompatibility = 1.8
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'MagnetoMain'
+}
 
 repositories {
     mavenCentral()
