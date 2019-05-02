@@ -16,8 +16,17 @@ repositories {
 
 dependencies {
     compile 'com.sparkjava:spark-core:2.2'
+   // compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-task stage{
-    dependsOn build
+task stage {
+    dependsOn installDist
+}
+
+jar{
+    manifest{
+        attributes(
+                'Main-Class': 'MagnetoMain'
+        )
+    }
 }
