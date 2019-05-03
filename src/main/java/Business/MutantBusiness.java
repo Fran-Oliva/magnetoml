@@ -48,11 +48,11 @@ public class MutantBusiness {
         JsonObject response = new JsonObject();
         JsonElement element = new JsonPrimitive("200-ok");
         if(total>1){
-            MongoDriver.getInstance().saveDNA(dnaArray,true);
+//            MongoDriver.getInstance().saveDNA(dnaArray,true);
             response.add("status", element);
             return response;
         }else{
-            MongoDriver.getInstance().saveDNA(dnaArray,false);
+//            MongoDriver.getInstance().saveDNA(dnaArray,false);
             throw new ForbiddenException();
         }
     }
