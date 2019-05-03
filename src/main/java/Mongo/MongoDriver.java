@@ -47,6 +47,7 @@ public class MongoDriver {
         Document findQueryMutant = new Document(STATS_COLLECTION_FIELD_MUTANT, true);
         long resultCountMutant = db.getCollection(STATS_COLLECTION_NAME).count(findQueryMutant);
         Document result = new Document();
+
         result.append("count_human_dna",resultCountHuman);
         result.append("count_mutant_dna",resultCountMutant);
         if(resultCountHuman > 0){
