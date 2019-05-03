@@ -29,7 +29,7 @@ public class MongoDriver {
         MongoClientURI mongoURI = new MongoClientURI("mongodb://heroku_5km74hlb:jhgqbumqa0ubctodgn6nloaoj9@ds151066.mlab.com:51066/heroku_5km74hlb");
         mongoClient = new MongoClient(mongoURI);
         db = mongoClient.getDatabase(DATA_BASE_NAME);
-        db.getCollection(STATS_COLLECTION_NAME).createIndex(Indexes.text(STATS_COLLECTION_FIELD_ADN));
+//        db.getCollection(STATS_COLLECTION_NAME).createIndex(Indexes.text(STATS_COLLECTION_FIELD_ADN));
     }
 
     public void saveDNA(JsonArray dna, boolean isMutant){
