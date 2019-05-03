@@ -47,11 +47,10 @@ public class MongoDriver {
         Document findQueryMutant = new Document(STATS_COLLECTION_FIELD_MUTANT, true);
         long resultCountMutant = db.getCollection(STATS_COLLECTION_NAME).count(findQueryMutant);
         Document result = new Document();
-
         result.append("count_human_dna",String.valueOf(resultCountHuman));
         result.append("count_mutant_dna",String.valueOf(resultCountMutant));
         if(resultCountHuman > 0){
-            long ratioResult = resultCountMutant / resultCountHuman;
+            float ratioResult = (float)resultCountMutant / (float)resultCountHuman;
             result.append("ratio",String.valueOf(ratioResult));
         }else{
             result.append("ratio","undefined");
