@@ -5,12 +5,12 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Indexes;
+import com.mongodb.util.JSON;
 import org.bson.Document;
 
 public class MongoDriver {
     private MongoDatabase db;
     private MongoClient mongoClient;
-    private String DATA_BASE_NAME = "magneto";
     private String STATS_COLLECTION_NAME = "stats";
     private String STATS_COLLECTION_FIELD_ADN = "adn";
     private String STATS_COLLECTION_FIELD_MUTANT = "mutant";
@@ -26,17 +26,18 @@ public class MongoDriver {
 
 
     public void initialize() {
-        MongoClientURI mongoURI = new MongoClientURI("mongodb://heroku_5km74hlb:jhgqbumqa0ubctodgn6nloaoj9@ds151066.mlab.com:51066/heroku_5km74hlb");
+        MongoClientURI mongoURI = new MongoClientURI("mongodb://fran:lab6996mongo@ds151066.mlab.com:51066/heroku_5km74hlb");
         mongoClient = new MongoClient(mongoURI);
-        db = mongoClient.getDatabase(DATA_BASE_NAME);
-//        db.getCollection(STATS_COLLECTION_NAME).createIndex(Indexes.text(STATS_COLLECTION_FIELD_ADN));
+        db = mongoClient.getDatabase(mongoURI.getDatabase());
+        db.getCollection(STATS_COLLECTION_NAME).createIndex(Indexes.text(STATS_COLLECTION_FIELD_ADN));
     }
 
     public void saveDNA(JsonArray dna, boolean isMutant){
 
+        Object dnaStr = JSON.parse(dna.toString());
         db.getCollection(STATS_COLLECTION_NAME)
                 .insertOne(new Document()
-                        .append(STATS_COLLECTION_FIELD_ADN,dna)
+                        .append(STATS_COLLECTION_FIELD_ADN,dnaStr)
                         .append(STATS_COLLECTION_FIELD_MUTANT,isMutant)
                 );
     }
@@ -53,7 +54,6 @@ public class MongoDriver {
         }else{
             result.append("ratio","undefined");
         }
-
         return result;
     }
 
