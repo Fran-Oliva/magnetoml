@@ -4,17 +4,18 @@ import Business.Searches.Horizontal;
 import Business.Searches.Oblique;
 import Business.Searches.Vertical;
 import Exceptions.ForbiddenException;
+import Mongo.MongoDriver;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.Document;
 
-public class VerifyMutantBusiness {
+public class MutantBusiness {
     List<String> basesNitrogenadas = new ArrayList<>();
-    public VerifyMutantBusiness(){
+    public MutantBusiness(){
         basesNitrogenadas.add("A");
         basesNitrogenadas.add("T");
         basesNitrogenadas.add("C");
@@ -47,10 +48,17 @@ public class VerifyMutantBusiness {
         JsonObject response = new JsonObject();
         JsonElement element = new JsonPrimitive("200-ok");
         if(total>1){
+            MongoDriver.getInstance().saveDNA(dnaArray,true);
             response.add("status", element);
             return response;
         }else{
+            MongoDriver.getInstance().saveDNA(dnaArray,false);
             throw new ForbiddenException();
         }
+    }
+
+    public Object getStats(){
+        return MongoDriver.getInstance().findDNAStats();
+
     }
 }
