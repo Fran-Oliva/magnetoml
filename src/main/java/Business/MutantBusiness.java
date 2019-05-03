@@ -58,7 +58,7 @@ public class MutantBusiness {
     }
 
     public Object getStats(){
-        return MongoDriver.getInstance().findDNAStats();
+        return MongoDriver.getInstance().findDNAStats().toJson();
 
     }
 }
