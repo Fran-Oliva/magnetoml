@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Business.MutantBusinessTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2019-05-04T21:16:31" hostname="fran-Lenovo-YOGA-710-14IKB" time="14.484">
+<testsuite name="Business.MutantBusinessTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2019-05-04T22:03:20" hostname="fran-Lenovo-YOGA-710-14IKB" time="11.649">
   <properties/>
-  <testcase name="verify" classname="Business.MutantBusinessTest" time="7.894">
+  <testcase name="verify" classname="Business.MutantBusinessTest" time="5.929">
     <failure message="java.lang.IllegalStateException: This is not a JSON Array." type="java.lang.IllegalStateException">java.lang.IllegalStateException: This is not a JSON Array.
 	at com.google.gson.JsonElement.getAsJsonArray(JsonElement.java:106)
 	at Business.MutantBusiness.verify(MutantBusiness.java:27)
@@ -58,7 +58,7 @@
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <testcase name="getStats" classname="Business.MutantBusinessTest" time="6.59"/>
+  <testcase name="getStats" classname="Business.MutantBusinessTest" time="5.72"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
