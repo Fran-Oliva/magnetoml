@@ -2,11 +2,11 @@ package Business.Searches;
 
 public class Horizontal {
 
-    String root="";
-    char letter;
-    int validSequence = 4;
-    int equalLetterFoundHorizontal = 0;
-    int totalSequenceFound =0;
+    private String root="";
+    private char letter;
+    private int validSequence = 4;
+    private int equalLetterFoundHorizontal = 0;
+    private int totalSequenceFound =0;
 
     public int horizontalSearch(char[][] m){
         for (int i = 0; i < m.length; i++) {

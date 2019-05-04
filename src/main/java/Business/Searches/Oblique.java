@@ -1,9 +1,9 @@
 package Business.Searches;
 
 public class Oblique {
-    int validSequence = 4;
-    int equalLetterFoundRigth = 0;
-    int equalLetterFoundLeft = 0;
+    private int validSequence = 4;
+    private int equalLetterFoundRigth = 0;
+    private int equalLetterFoundLeft = 0;
 
     public int obliqueSearch(char[][] m){
         String root="";

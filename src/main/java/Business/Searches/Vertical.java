@@ -1,11 +1,11 @@
 package Business.Searches;
 
 public class Vertical {
-    String root ="";
-    char letter ='a';
-    int validSequence = 4;
-    int equalLetterFoundVertical = 0;
-    int totalSequenceFound =0;
+    private String root ="";
+    private char letter ='a';
+    private int validSequence = 4;
+    private int equalLetterFoundVertical = 0;
+    private int totalSequenceFound =0;
 
     public int verticalSearch(char[][] m){
         for (int i = 0; i < m.length; i++) {

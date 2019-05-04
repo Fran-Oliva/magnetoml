@@ -3,6 +3,7 @@ package Mongo;
 import com.google.gson.JsonArray;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.MongoWriteException;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Indexes;
 import com.mongodb.util.JSON;
@@ -14,6 +15,7 @@ public class MongoDriver {
     private String STATS_COLLECTION_NAME = "stats";
     private String STATS_COLLECTION_FIELD_ADN = "adn";
     private String STATS_COLLECTION_FIELD_MUTANT = "mutant";
+    private String STATS_COLLECTION_FIELD_ID = "_id";
 
     private static MongoDriver instance = null;
 
@@ -35,11 +37,17 @@ public class MongoDriver {
     public void saveDNA(JsonArray dna, boolean isMutant){
 
         Object dnaStr = JSON.parse(dna.toString());
-        db.getCollection(STATS_COLLECTION_NAME)
-                .insertOne(new Document()
-                        .append(STATS_COLLECTION_FIELD_ADN,dnaStr)
-                        .append(STATS_COLLECTION_FIELD_MUTANT,isMutant)
-                );
+        try{
+            db.getCollection(STATS_COLLECTION_NAME)
+                    .insertOne(new Document()
+                            .append(STATS_COLLECTION_FIELD_ID,dna.toString())
+                            .append(STATS_COLLECTION_FIELD_ADN,dnaStr)
+                            .append(STATS_COLLECTION_FIELD_MUTANT,isMutant)
+                    );
+        }catch (MongoWriteException ex){
+            return;
+        }
+
     }
     public Document findDNAStats(){
         Document findQueryHuman = new Document(STATS_COLLECTION_FIELD_MUTANT,false);
