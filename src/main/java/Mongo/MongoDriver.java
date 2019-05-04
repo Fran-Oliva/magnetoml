@@ -61,7 +61,7 @@ public class MongoDriver {
             float ratioResult = (float)resultCountMutant / (float)resultCountHuman;
             result.append("ratio",String.valueOf(ratioResult));
         }else{
-            result.append("ratio","undefined");
+            result.append("ratio",resultCountMutant);
         }
         return result;
     }
