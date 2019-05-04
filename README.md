@@ -15,7 +15,7 @@ Json de prueba en POST {dna:["ATTCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACT
 
 2-ejecutar el comando "gradle run"
 
-# Instrucciones para ejecutar TEsts
+# Instrucciones para ejecutar Tests
 
 1- ejecutar el comando "gradle test"
 
